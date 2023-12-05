@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { types } from "../../../shared/types";
 import { getPaginationButtons } from "../lib/utils";
 import { constants } from "../../../shared/const";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { mixins } from "../../../shared/lib";
 import { useEffect, useState } from "react";
 
@@ -14,10 +14,17 @@ export function PostsPagination(props: PostPaginationProps) {
   const { posts } = props;
   const [paginationButtons, setPaginationButtons] = useState<string[]>([]);
   const { numberPage } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (posts) {
-      setPaginationButtons(getPaginationButtons(posts));
+    if (posts && posts.length > 0) {
+      const buttons = getPaginationButtons(posts);
+
+      if (Number(numberPage) > buttons.length) {
+        navigate(constants.BrowserRoute.NotFound, { replace: true });
+      }
+
+      setPaginationButtons(buttons);
     }
   }, [posts]);
 

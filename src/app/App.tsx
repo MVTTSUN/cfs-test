@@ -13,13 +13,20 @@ function App() {
     <Main>
       <Routes>
         <Route path={BrowserRoute.Main}>
-          <Route index element={<Navigate to={`${BrowserRoute.Posts}/1`} />} />
+          <Route
+            index
+            element={<Navigate to={`${BrowserRoute.Posts}/1`} replace />}
+          />
           <Route
             path={`${BrowserRoute.Posts}/:numberPage`}
             element={<PostsPage />}
           />
           <Route path={`${BrowserRoute.Post}/:id`} element={<PostPage />} />
           <Route path={BrowserRoute.NotFound} element={<h2>404</h2>} />
+          <Route
+            path="*"
+            element={<Navigate to={`${BrowserRoute.NotFound}`} replace />}
+          />
         </Route>
       </Routes>
     </Main>

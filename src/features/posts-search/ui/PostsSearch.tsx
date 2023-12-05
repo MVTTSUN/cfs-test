@@ -29,6 +29,7 @@ export function PostsSearch(props: PostSearchProps) {
         type="text"
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
+        placeholder="Введите название"
       />
       <Button>Поиск</Button>
     </Form>

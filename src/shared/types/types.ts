@@ -5,4 +5,6 @@ type Post = {
   body: string;
 };
 
-export type { Post };
+type NotFoundError = Error;
+
+export type { Post, NotFoundError };

@@ -13,7 +13,7 @@ enum KeyQuery {
 
 enum BrowserRoute {
   Main = "/",
-  NotFound = "*",
+  NotFound = "/404",
   Posts = "/posts",
   Post = "/post",
 }

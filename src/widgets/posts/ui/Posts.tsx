@@ -15,7 +15,7 @@ export function Posts() {
   const { data: posts } = usePosts();
 
   useEffect(() => {
-    if (posts) {
+    if (posts && posts.length > 0) {
       setSearchedPosts(getSearchedPosts(valueSearch, posts));
     }
   }, [valueSearch, posts]);
